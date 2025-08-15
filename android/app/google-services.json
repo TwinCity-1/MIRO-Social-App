@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "344361927832",
+    "project_id": "miro-social-app",
+    "storage_bucket": "miro-social-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344361927832:android:d87b354f7d62d98528fced",
+        "android_client_info": {
+          "package_name": "com.alex.neon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr-irF_pLrziNJnloTGV1iT6EA8ySDQIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

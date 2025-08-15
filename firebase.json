@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"dart":{"lib/firebase_options.dart":{"projectId":"miro-social-app","configurations":{"android":"1:344361927832:android:d87b354f7d62d98528fced"}}},"android":{"default":{"projectId":"miro-social-app","appId":"1:344361927832:android:d87b354f7d62d98528fced","fileOutput":"android/app/google-services.json"}}}}}
