@@ -1,7 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:neon/auth/auth.dart';
 import 'package:neon/auth/login_or_register.dart';
 import 'package:neon/firebase_options.dart';
+import 'package:neon/pages/home_page.dart';
+import 'package:neon/pages/profile_page.dart';
+import 'package:neon/pages/users_page.dart';
 // import 'package:neon/pages/login_page.dart';
 // import 'package:neon/pages/register_page.dart';
 import 'package:neon/theme/dark_mode.dart';
@@ -20,9 +24,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginOrRegister(),
+      home: const AuthPage(),
       theme: lightMode,
       darkTheme: darkMode,
+      routes: {
+        '/login_register_page': (context) => const LoginOrRegister(),
+        '/home_page': (context) => const HomePage(),
+        "/profile_page": (context) => ProfilePage(),
+        '/users_page': (context) => const UsersPage(),
+      },
     );
   }
 }

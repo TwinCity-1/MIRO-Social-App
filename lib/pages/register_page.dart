@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:neon/components/my_button.dart';
@@ -38,25 +39,41 @@ class _RegisterPageState extends State<RegisterPage> {
       Navigator.pop(context);
       //show an error message
       displayMessageToUser("Passwords don't match. Please try again.", context);
+    } else {
+      // if passwords match
+      try {
+        // create the user
+        UserCredential? userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+              email: emailController.text,
+              password: passwordController.text,
+            );
+
+        //create a user document and save it to firestore
+        createUserDocument(userCredential);
+
+        //pop loading circle
+
+        if (context.mounted) Navigator.pop(context);
+      } on FirebaseAuthException catch (e) {
+        //pop loading circle
+        Navigator.pop(context);
+        //display the error
+        displayMessageToUser(e.code, context);
+      }
     }
-    //try create the user
+  }
 
-    try {
-      // create the user
-      UserCredential? userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-            email: emailController.text,
-            password: passwordController.text,
-          );
-
-      //pop loading circle
-
-      Navigator.pop(context);
-    } on FirebaseAuthException catch (e) {
-      //pop loading circle
-      Navigator.pop(context);
-      //display the error
-      displayMessageToUser(e.code, context);
+  //try create the user the user document and collect them in firestore
+  Future<void> createUserDocument(UserCredential? userCredential) async {
+    if (userCredential != null && userCredential.user != null) {
+      await FirebaseFirestore.instance
+          .collection("Users")
+          .doc(userCredential.user!.email)
+          .set({
+            'email': userCredential.user!.email,
+            'username': usernameController.text,
+          });
     }
   }
 
