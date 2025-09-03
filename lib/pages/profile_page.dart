@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
+import 'package:neon/components/my_back_button.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
@@ -39,8 +40,13 @@ class ProfilePage extends StatelessWidget {
 
             return Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  //back button
+                  const Padding(
+                    padding: EdgeInsets.only(top: 50.0, left: 25),
+                    child: Row(children: [MyBackButton()]),
+                  ),
+                  const SizedBox(height: 25),
                   //profile pic
                   Container(
                     decoration: BoxDecoration(
